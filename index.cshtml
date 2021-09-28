@@ -1,0 +1,1011 @@
+﻿@using System.Net.Mail;
+@using System.Configuration;
+
+@functions {
+    public static string FirstCharToUpper(string value)
+    {
+        char[] array = value.ToCharArray();
+        // Handle the first letter in the string.  
+        if (array.Length >= 1)
+        {
+            if (char.IsLower(array[0]))
+            {
+                array[0] = char.ToUpper(array[0]);
+            }
+        }
+        // Scan through the letters, checking for spaces.  
+        // ... Uppercase the lowercase letters following spaces.  
+        for (int i = 1; i < array.Length; i++)
+        {
+            if (array[i - 1] == ' ')
+            {
+                if (char.IsLower(array[i]))
+                {
+                    array[i] = char.ToUpper(array[i]);
+                }
+            }
+        }
+        return new string(array);
+    }
+}
+
+@{
+
+    string rawdata = "";
+    bool islive = false;
+    try
+    {
+        //Pyrotoz
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.twitch.tv/helix/streams?user_id=8906620");
+        //OverwatchLeague
+        //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.twitch.tv/helix/streams?user_id=137512364");
+        request.Headers.Add("Client-ID", ConfigurationManager.AppSettings["apikey"]);
+
+        request.ContentType = "application/json";
+
+        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+        {
+            using (Stream stream = response.GetResponseStream())
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    rawdata = reader.ReadToEnd();
+                }
+
+            }
+
+        }
+
+        var jsondata = Json.Decode(rawdata);
+        if (jsondata.data[0].id != null) { islive = true; }
+    }
+    catch(Exception e)
+    {
+    }
+
+
+}
+
+<!DOCTYPE html>
+
+
+<SCRIPT type="text/javascript">
+
+    function onHuman(response) {
+        document.getElementById('captcha').value = response;
+    }
+</SCRIPT>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" rel="stylesheet" href="stylesheet.css" />
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,700i" rel="stylesheet">
+
+    <title>Random Pokémon Generator // Pyrotoz's Pokémon Teambuilder</title>
+
+    <meta name="description" content="Generate a random team of Pokémon based on region, type or Smogon tier! Check strengths, weaknesses and even import from or export to Pokemon Showdown.">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+
+    <script type='text/javascript' src='~/main.js'></script>
+    <script type="text/javascript" src='~/pokedex-swsh.js'></script>
+    <script type='text/javascript' src='https://www.pyrotoz.com/tierlist-ORAS.js'></script>
+    <script type='text/javascript' src='https://www.pyrotoz.com/tierlist-SUMO.js'></script>
+    <script type='text/javascript' src='~/tierlist-SWSH.js'></script>
+    <script type='text/javascript' src='~/learnsets-swsh.js'></script>
+    <script type='text/javascript' src='~/moves-swsh.js'></script>
+
+    <script type='text/javascript' src='~/abilities-swsh.js'></script>
+    <script type='text/javascript' src='~/items-swsh.js'></script>
+    <script type='text/javascript' src='~/presets-swsh.js'></script>
+    <script type='text/javascript' src='https://www.pyrotoz.com/dictionaryfile.js'></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1914194228963759",
+            enable_page_level_ads: true
+        });
+    </script>
+
+</head>
+
+<body onload="pageStartup()">
+
+    <div class="div-header">
+        <div class="hamburger-menu">
+            <div>
+                <span class='hamburger-menu-span'></span>
+                <span class='hamburger-menu-span'></span>
+                <span class='hamburger-menu-span'></span>
+            </div>
+            <p class='hamburger-menu-text'>MENU</p>
+        </div>
+    </div>
+
+    <div class="side-menu">
+        <div>
+            <ul>
+                <li>
+                    @if (islive)
+                    {
+                        <a href="~/index.cshtml?redirect=home">
+                            <img src="images/pokeball.png" alt="" title='Random Pokémon Generator'>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="~/index.cshtml">
+                            <img src="images/pokeball.png" alt="" title='Random Pokémon Generator'>
+                        </a>
+                    }
+                </li>
+                <li>
+                    <a href="~/twitch.cshtml">
+                        @if (islive)
+                        {
+                            <img src="~/Images/twitch-live-animation.gif" alt="" title='Now LIVE on Twitch'>
+                            if (!Request.Url.PathAndQuery.EndsWith("redirect=home"))
+                            {
+                                Response.Redirect("~/twitch.cshtml");
+                            }
+                        }
+                        else
+                        {
+                            <img src="images/twitch.png" alt="" title='Twitch'>
+                        }
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/intent/follow?screen_name=Pyrotoz&tw_p=followbutton" target="_blank">
+                        <img src="images/twitter.png" alt="" title='Twitter'>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.youtube.com/subscription_center?add_user=pyrotoz" target="_blank">
+                        <img src="images/youtube.png" alt="" title='YouTube'>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="pageholder">
+        <div id="page">
+            <!--<div id="header"><span class="helper"></span><p>Pyrotoz's Teambuilder</p></div>-->
+            <div id="leftpanel">
+                <div class="pokemon" id="poke1">
+                    <div class="pokeContainer">
+                        <span class="helper"></span>
+                        <img src="https://pyrotoz.com/models/pikachu.gif" id="pic1" onclick="makeShiny(this)" />
+                        <select id="poke1choice" onchange="changePic(this)" class="form-control"></select>
+                        <select id="poke1item" onChange="itemChanged(this)" class="form-control"></select>
+                    </div>
+                    <div id="padlockzone">
+                        <img src="https://pyrotoz.com/padlock-unlocked.png" class="padlockimage" id="padlock1" title="Click to lock/unlock Pokémon" onclick="lockUnlock(this)" />
+                    </div>
+                    <div class="pokeMovelist">
+                        <div class="moveDiv">
+                            <select id="poke1move1" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke1move2" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke1move3" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke1move4" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv" id="finalmovediv">
+                            <select id="poke1ability" onchange="getWeaknesses(); getStrengths()" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="pokemon" id="poke2">
+                    <div class="pokeContainer">
+                        <span class="helper"></span>
+                        <img src="https://pyrotoz.com/models/pikachu.gif" id="pic2" onclick="makeShiny(this)" />
+                        <select id="poke2choice" onchange="changePic(this)" class="form-control"></select>
+                        <select id="poke2item" onChange="itemChanged(this)" class="form-control"></select>
+                    </div>
+                    <div id="padlockzone">
+                        <img src="https://pyrotoz.com/padlock-unlocked.png" class="padlockimage" id="padlock2" title="Click to lock/unlock Pokémon" onclick="lockUnlock(this)" />
+                    </div>
+                    <div class="pokeMovelist">
+                        <div class="moveDiv">
+                            <select id="poke2move1" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke2move2" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke2move3" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke2move4" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv" id="finalmovediv">
+                            <select id="poke2ability" onchange="getWeaknesses(); getStrengths()" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="pokemon" id="poke3">
+                    <div class="pokeContainer">
+                        <span class="helper"></span>
+                        <img src="https://pyrotoz.com/models/pikachu.gif" id="pic3" onclick="makeShiny(this)" />
+                        <select id="poke3choice" onchange="changePic(this)" class="form-control"></select>
+                        <select id="poke3item" onChange="itemChanged(this)" class="form-control"></select>
+                    </div>
+                    <div id="padlockzone">
+                        <img src="https://pyrotoz.com/padlock-unlocked.png" class="padlockimage" id="padlock3" title="Click to lock/unlock Pokémon" onclick="lockUnlock(this)" />
+                    </div>
+                    <div class="pokeMovelist">
+                        <div class="moveDiv">
+                            <select id="poke3move1" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke3move2" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke3move3" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke3move4" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv" id="finalmovediv">
+                            <select id="poke3ability" onchange="getWeaknesses(); getStrengths()" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="pokemon" id="poke4">
+                    <div class="pokeContainer">
+                        <span class="helper"></span>
+                        <img src="https://pyrotoz.com/models/pikachu.gif" id="pic4" onclick="makeShiny(this)" />
+                        <select id="poke4choice" onchange="changePic(this)" class="form-control"></select>
+                        <select id="poke4item" onChange="itemChanged(this)" class="form-control"></select>
+                    </div>
+                    <div id="padlockzone">
+                        <img src="https://pyrotoz.com/padlock-unlocked.png" class="padlockimage" id="padlock4" title="Click to lock/unlock Pokémon" onclick="lockUnlock(this)" />
+                    </div>
+                    <div class="pokeMovelist">
+                        <div class="moveDiv">
+                            <select id="poke4move1" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke4move2" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke4move3" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke4move4" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv" id="finalmovediv">
+                            <select id="poke4ability" onchange="getWeaknesses(); getStrengths()" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="pokemon" id="poke5">
+                    <div class="pokeContainer">
+                        <span class="helper"></span>
+                        <img src="https://pyrotoz.com/models/pikachu.gif" id="pic5" onclick="makeShiny(this)" />
+                        <select id="poke5choice" onchange="changePic(this)" class="form-control"></select>
+                        <select id="poke5item" onChange="itemChanged(this)" class="form-control"></select>
+                    </div>
+                    <div id="padlockzone">
+                        <img src="https://pyrotoz.com/padlock-unlocked.png" class="padlockimage" id="padlock5" title="Click to lock/unlock Pokémon" onclick="lockUnlock(this)" />
+                    </div>
+                    <div class="pokeMovelist">
+                        <div class="moveDiv">
+                            <select id="poke5move1" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke5move2" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke5move3" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke5move4" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv" id="finalmovediv">
+                            <select id="poke5ability" onchange="getWeaknesses(); getStrengths()" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="pokemon" id="poke6">
+                    <div class="pokeContainer">
+                        <span class="helper"></span>
+                        <img src="https://pyrotoz.com/models/pikachu.gif" id="pic6" onclick="makeShiny(this)" />
+                        <select id="poke6choice" onchange="changePic(this)" class="form-control"></select>
+                        <select id="poke6item" onChange="itemChanged(this)" class="form-control"></select>
+                    </div>
+                    <div id="padlockzone">
+                        <img src="https://pyrotoz.com/padlock-unlocked.png" class="padlockimage" id="padlock6" title="Click to lock/unlock Pokémon" onclick="lockUnlock(this)" />
+                    </div>
+                    <div class="pokeMovelist">
+                        <div class="moveDiv">
+                            <select id="poke6move1" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke6move2" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke6move3" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv">
+                            <select id="poke6move4" onchange="getStrengths()" class="form-control"></select>
+                        </div>
+                        <div class="moveDiv" id="finalmovediv">
+                            <select id="poke6ability" onchange="getWeaknesses(); getStrengths()" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="rightpanel">
+                <div id="statzone">
+                    <!--<div id="maintitle">
+                        <span class="helper"></span>
+                        <p>Tommy's Teambuilder</p>
+                    </div>-->
+                    <div id="statzoneleft" onmouseover="showAvgStats()">
+						<div id = 'statzonetitleleft'><p>Average Stats</p></div>
+						<div id = 'statzoneleftdata'>
+							<table>
+								<tr><td class="tablelabel" id="hplabel">HP</td><td id="hpbar"></td><td id="hpbuffer"></td></tr>
+							</table>
+							<table>
+								<tr><td class="tablelabel" id="atklabel">Atk</td><td id="atkbar"></td><td id="atkbuffer"></td></tr>
+							</table>
+							<table>
+								<tr><td class="tablelabel" id="deflabel">Def</td><td id="defbar"></td><td id="defbuffer"></td></tr>
+							</table>
+							<table>
+								<tr><td class="tablelabel" id="spattlabel">SpA</td><td id="spattbar"></td><td id="spattbuffer"></td></tr>
+							</table>
+							<table>
+								<tr><td class="tablelabel" id="spdeflabel">SpD</td><td id="spdefbar"></td><td id="spdefbuffer"></td></tr>
+							</table>
+							<table>
+								<tr><td class="tablelabel" id="speedlabel">Spe</td><td id="speedbar"></td><td id="speedbuffer"></td></tr>
+							</table>
+						</div>
+						
+					</div>
+                    <div id="statzoneright">
+                        <div id='statzonetitleright'><p title="Pokémon Showdown Battle Simulator (http://pokemonshowdown.com/)">Showdown</p></div>
+                        <button title="Export this team to Pokémon Showdown" id="exportshowdown" onclick="exportToShowdown()">Export to Showdown</button>
+                        <button title="Import a team from Pokémon Showdown" id="importshowdown" onclick="importFromShowdown()">Import from Showdown</button>
+                        <button title="Select a pre-made team for Pokémon Showdown" id="presetshowdown" onclick="presetTeams()">Pre-made Teams</button>
+                    </div>
+                </div>
+
+                <div id="strongzone" class="rightzone">
+                    <div id="strongzonetitle"><p title="No. of moves you have to hit each type super-effectively">Strong Against</p></div>
+                    <div id="strongzone1">
+                        <span class="helper"></span>
+                        <div id="strongzonedivider">
+                            <div class="icons bug">BUG</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons dark">DARK</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons dragon">DRAGON</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons electro">ELECTR</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons fairy">FAIRY</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons fight">FIGHT</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons fire">FIRE</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons flying">FLYING</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons ghost">GHOST</div>
+                        </div>
+                    </div>
+                    <div id="strongzone2">
+                        <span class="helper"></span>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsbug" id="strongbug" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsdark" id="strongdark" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsdragon" id="strongdragon" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvselectric" id="strongelectric" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsfairy" id="strongfairy" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsfight" id="strongfight" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsfire" id="strongfire" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsflying" id="strongflying" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsghost" id="strongghost" value="0" readonly>
+                        </div>
+                    </div>
+                    <div id="strongzone3">
+                        <span class="helper"></span>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Grass.png"/>-->
+                            <div class="icons grass">GRASS</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Ground.png"/>-->
+                            <div class="icons ground">GROUND</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Ice.png"/>-->
+                            <div class="icons ice">ICE</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Normal.png"/>-->
+                            <div class="icons normal">NORMAL</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Poison.png"/>-->
+                            <div class="icons poison">POISON</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Psychic.png"/>-->
+                            <div class="icons psycho">PSYCHIC</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Rock.png"/>-->
+                            <div class="icons rock">ROCK</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Steel.png"/>-->
+                            <div class="icons steel">STEEL</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <!--<img src="https://pyrotoz.com/types/Water.png"/>-->
+                            <div class="icons water">WATER</div>
+                        </div>
+                    </div>
+                    <div id="strongzone4">
+                        <span class="helper"></span>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsgrass" id="stronggrass" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsground" id="strongground" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsice" id="strongice" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsnormal" id="strongnormal" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvspoison" id="strongpoison" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvspsychic" id="strongpsychic" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsrock" id="strongrock" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvssteel" id="strongsteel" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvswater" id="strongwater" value="0" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div id="weakzone" class="rightzone">
+
+                    <div id="weakzonetitle"><p title="No. of type weaknesses across your team (x4 weaknesses are given the value '2')">Weak Against</p></div>
+
+                    <div id="weakzone1">
+                        <span class="helper"></span>
+                        <div id="strongzonedivider">
+                            <div class="icons bug">BUG</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons dark">DARK</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons dragon">DRAGON</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons electro">ELECTR</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons fairy">FAIRY</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons fight">FIGHT</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons fire">FIRE</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons flying">FLYING</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons ghost">GHOST</div>
+                        </div>
+                    </div>
+                    <div id="weakzone2">
+                        <span class="helper"></span>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsbug" id="weakbug" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsdark" id="weakdark" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsdragon" id="weakdragon" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvselectric" id="weakelectric" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsfairy" id="weakfairy" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsfight" id="weakfight" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsfire" id="weakfire" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsflying" id="weakflying" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsghost" id="weakghost" value="0" readonly>
+                        </div>
+                    </div>
+                    <div id="weakzone3">
+                        <span class="helper"></span>
+                        <div id="strongzonedivider">
+                            <div class="icons grass">GRASS</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons ground">GROUND</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons ice">ICE</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons normal">NORMAL</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons poison">POISON</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons psycho">PSYCHIC</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons rock">ROCK</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons steel">STEEL</div>
+                        </div>
+                        <div id="strongzonedivider">
+                            <div class="icons water">WATER</div>
+                        </div>
+                    </div>
+                    <div id="weakzone4">
+                        <span class="helper"></span>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsgrass" id="weakgrass" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsground" id="weakground" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsice" id="weakice" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsnormal" id="weaknormal" value='-' readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvspoison" id="weakpoison" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvspsychic" id="weakpsychic" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvsrock" id="weakrock" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvssteel" id="weaksteel" value="0" readonly>
+                        </div>
+                        <div id="strongzonedivider">
+                            <input type="text" name="strongvswater" id="weakwater" value="0" readonly>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div id="checkzone">
+                    <div id="checkzonetitle" title="Read-only checklist of important stuff for a team"><p>Team Checklist</p></div>
+                    <table id="checktable">
+                        <tr>
+                            <td title="Rapid Spin, Defog or Court Change"><input type="checkbox" id="checkspinner" onclick="return false"><span class="checkmark"></span>Spinner</td>
+                            <td title="Heal Bell, Aromatherapy, Lunar Dance or Healing Wish"><input type="checkbox" id="checkcleric" onclick="return false"><span class="checkmark"></span>Cleric</td>
+                            <td title="Wish/Recover/Rest/Leech Seed/Healing Wish etc."><input type="checkbox" id="checkrecovery" onclick="return false"><span class="checkmark"></span>Recovery</td>
+                        </tr>
+                        <tr>
+                            <td title="Status inflicting move (not from secondary effect)"><input type="checkbox" id="checkstatuser" onclick="return false"><span class="checkmark"></span>Statuser</td>
+                            <td title="Roar/Whirlwind/Dragon Tail/Circle Throw/Haze/Clear Smog"><input type="checkbox" id="checkphaser" onclick="return false"><span class="checkmark"></span>P/hazer</td>
+                            <td title="Entry hazards"><input type="checkbox" id="checkhazards" onclick="return false"><span class="checkmark"></span>Hazards</td>
+                        </tr>
+                        <tr>
+                            <td title="Damaging priority move (e.g. Quick Attack)"><input type="checkbox" id="checkpriority" onclick="return false"><span class="checkmark"></span>Priority</td>
+                            <td title="Pokemon with a stat boosing move (e.g. Nasty Plot)"><input type="checkbox" id="checkboost" onclick="return false"><span class="checkmark"></span>Booster</td>
+                            <td title="Volt Switch/U-turn/Flip Turn/Parting Shot (good for momentum)"><input type="checkbox" id="checkvoltturn" onclick="return false"><span class="checkmark"></span>Volt-turn</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+            <div id='asa'><div></div></div>
+
+            <div id="randombar">
+                <div id="randombuttonzone">
+                    <span class="helper"></span>
+                    <button id="genRand" title="Generate a random team using the selected filters" onclick="beginRandomGenerate()">Randomise!</button>
+                </div>
+                <!--<div id="fullsearchzone">
+                    <span class="helper"></span>
+                    <input type="checkbox" id="fullSearch" title="Click to enable 'intelligent' teambuilding (more competitive, but takes longer)"></input>
+                </div>-->
+                <div id="randomtierzone" title="Filter by Smogon tier">
+                    <span class="helper"></span>
+                    <p class="randLabel" id="tierLabel">Tier</p>
+                    <select id="tierChoice" onChange="filterConflict(this)" class="form-control">
+                        <option>(Any)</option>
+                        <option>Ubers</option>
+                        <option>OU</option>
+                        <option>UU</option>
+                        <option>RU</option>
+                        <option>NU</option>
+                        <option>PU</option>
+						<option>ZU</option>
+                        <option>NFE</option>
+                        <option>LC</option>
+                        <option>Hackmons</option>
+                        <option>National Dex</option>
+                    </select>
+                </div>
+                <div id="randomtypezone" title="Filter by Pokémon type">
+                    <span class="helper"></span>
+                    <p class="randLabel" id="typeLabel">Type</p>
+                    <select id="typeChoice" onChange="filterConflict(this)" class="form-control">
+                        <option>(Any)</option>
+                        <option>Bug</option>
+                        <option>Dark</option>
+                        <option>Dragon</option>
+                        <option>Electric</option>
+                        <option>Fairy</option>
+                        <option>Fighting</option>
+                        <option>Fire</option>
+                        <option>Flying</option>
+                        <option>Ghost</option>
+                        <option>Grass</option>
+                        <option>Ground</option>
+                        <option>Ice</option>
+                        <option>Normal</option>
+                        <option>Poison</option>
+                        <option>Psychic</option>
+                        <option>Rock</option>
+                        <option>Steel</option>
+                        <option>Water</option>
+                    </select>
+                </div>
+                <div id="randomregionzone" title="Filter by Pokémon region">
+                    <span class="helper"></span>
+                    <p class="randLabel" id="regionLabel">Region</p>
+                    <select id="regionChoice" onChange="filterConflict(this)" class="form-control">
+                        <option>(Any)</option>
+                        <option>Kanto</option>
+                        <option>Johto</option>
+                        <option>Hoenn</option>
+                        <option>Sinnoh</option>
+                        <option>Unova</option>
+                        <option>Kalos</option>
+                        <option>Alola</option>
+                        <option>Galar</option>
+                    </select>
+                </div>
+                <div id="randomviablezone" title="Choose between 'viable' and completely random movesets">
+                    <span class="helper"></span>
+                    <p class="randLabel" id="viableLabel">Sets</p>
+                    <select id="viableChoice" class="form-control">
+                        <option>Viable</option>
+                        <option>Random</option>
+                    </select>
+                </div>
+            </div>
+
+            <span class="helper"></span>
+
+            <div id="exportbox">
+
+
+                <div id="importexportinner">
+
+                    <div id="exporttitle">
+                        <span class="helper"></span><p id="exporttextp">Copy to clipboard, then paste into Pokémon Showdown's Teambuilder import/export</p>
+                    </div>
+                    <textarea id="exporttext" class='style-2' cols="auto" rows="auto" onclick="highlightText(this)"></textarea>
+                    <div id="exportbuttonzone">
+
+                        <button id="confirmexport" onclick="hideExportBox()">Close Window</button>
+                        <button id="confirmimport" onclick="doImport()">Import</button>
+                        <button id="confirmnames" onclick="addNames(this.innerHTML)">Add Names</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div id="presetbox">
+
+                <div id="presettitle">
+                    <span class="helper"></span><p id="presettextp">Select a team from the dropdown lists, then copy and paste into Pokémon Showdown's Teambuilder import/export</p>
+                </div>
+                <textarea id="presettext" class='style-2' cols="auto" rows="auto" onclick="highlightText(this)"></textarea>
+                <div id="presetbuttonzone">
+                    <table id="presetbuttontable">
+                        <tr>
+                            <td>
+                                <select id="ubersTeams" onchange="selectPreset(this)" class="form-control">
+                                    <option>(Ubers)</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="OUTeams" onchange="selectPreset(this)" class="form-control">
+                                    <option>(OU)</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="UUTeams" onchange="selectPreset(this)" class="form-control style-2">
+                                    <option>(UU)</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="RUTeams" onchange="selectPreset(this)" class="form-control">
+                                    <option>(RU)</option>
+                                </select>
+                            </td>
+                            <td>
+
+                                <button id="closepreset" onclick="hideExportBox()">Close Window</button>
+                            </td>
+                            <td>
+                                <select id="NUTeams" onchange="selectPreset(this)" class="form-control">
+                                    <option>(NU)</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="PUTeams" onchange="selectPreset(this)" class="form-control">
+                                    <option>(PU)</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button id="submitTeamButton" onclick="submitTeamPopup()" title="Click to submit a team to the database!">Submit Team</button>
+                            </td>
+                            <td>
+                                <select id="ZUTeams" onchange="selectPreset(this)" class="form-control" disabled>
+                                    <option>(ZU)</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <form action="" method="POST" style="height:100%;">
+                <div id="submitteambox">
+
+                    <div id="submitteamtitle">
+                        <span class="helper"></span><p id="presettextp">Choose a team name, select the tier, then paste the plaintext of your team (exported from Pokémon Showdown) and click 'submit'</p>
+                    </div>
+                    <div style="height:77%; padding-left:7%; padding-right:7%;">
+                        <div id="submitarea1" style="height:12%; margin-bottom:3%;">
+                            <table id="submittable" style="width:100%; height:100%; padding-left:6%">
+                                <tr>
+                                    <td style="width:50%"><span class="helper"></span><p>Team Name:</p></td>
+                                    <td style="width:50%"><span class="helper"></span><p>Tier:</p></td>
+                                </tr>
+                                <tr>
+
+                                    <td style="width:50%">
+                                        <input type="text" oninput='checkfilled()' name="teamname" id="submittextname" maxlength=25 rows=1>
+                                    </td>
+                                    <td style="width:50%">
+                                        <select id="submittexttier" name="teamtier" style="margin-bottom:1%;">
+                                            <option>Ubers</option>
+                                            <option>OU</option>
+                                            <option>UU</option>
+                                            <option>RU</option>
+                                            <option>NU</option>
+                                            <option>PU</option>
+                                            @*<option>ZU</option>*@
+                                        </select>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+
+
+                        <div style="height:72%">
+                            <textarea id="submitteamtext" oninput='checkfilled()' name="teamtext" cols="auto" rows="auto"></textarea>
+                        </div>
+                        <INPUT type="hidden" id="captcha" name="captcha" value="">
+                        <div id="submitbuttonzone" style="height:10%">
+                            <div align='center' class="g-recaptcha" data-callback="onHuman" data-sitekey=@ConfigurationManager.AppSettings["captchakey"]></div>
+                            <table style="height:100%; width:100%;">
+                                <tr>
+                                    <td>
+                                        <input type="submit" id='confirmteamsubmit' value="Submit" disabled>
+
+                                    </td>
+                                    <td>
+                                        <button type="button" id="closesubmit" onclick="closeSubmitBox()">Close Window</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <button type="" id='click'>Random</button>
+        <div id="adbanner">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Main Banner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-1914194228963759"
+                 data-ad-slot="4172715081"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+
+    
+
+    </div> <!--PAGEHOLDER-->
+
+    <script>
+
+        var rnd = document.getElementById('randombar');
+        var but = document.getElementById('click');
+        but.addEventListener("click", function () {
+            console.log('s')
+            randombar.classList.toggle("opacity");
+            but.classList.toggle("butt");
+            if (rnd.classList.contains('opacity')) { but.innerHTML = 'close' }
+            else { but.innerHTML = 'random' }
+
+        });
+
+        var a = document.getElementById('asa');
+        var str = document.getElementById('strongzone');
+        var st = str.cloneNode(true);
+        var wea = document.getElementById('weakzone');
+        var we = wea.cloneNode(true);
+        var ch = document.getElementById('checkzone');
+        var c = ch.cloneNode(true);
+
+        if (window.innerWidth <= 700) {
+            a.appendChild(st);
+            a.appendChild(we);
+            a.appendChild(c)
+            str.parentNode.removeChild(str);
+            wea.parentNode.removeChild(wea);
+            ch.parentNode.removeChild(ch);
+        }
+
+    </script>
+
+    @if (IsPost)
+    {
+        string teamname = Request["teamname"];
+        string teamtier = Request["teamtier"];
+        string teamtext = Request["teamtext"];
+        teamname = teamname.Trim();
+        teamtier = teamtier.Trim();
+        teamtext = teamtext.Trim();
+        if (Request["captcha"] != null)
+        {
+            if (Request["captcha"] != "")
+            {
+                SmtpClient client = new SmtpClient();
+                client.Host = "relay-hosting.secureserver.net";
+                client.Port = 25;
+                client.UseDefaultCredentials = false;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = false;
+                client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["emailname"], ConfigurationManager.AppSettings["emailpass"]);
+                string mailtext = "Raw:\n\n" + teamtext + "\n\n" + "Importable" + "\n\n" +
+                    '"' + teamname + '"' + ": {" + "\n" + "name: " + '"' + teamname + '"' + "," + "\n" +
+                    "tier: " + '"' + teamtier + '"' + "," + "\n" + "data: " + '"' + teamtext.Replace("\r\n","\\n\\\n")  + "\\n" + '"' + "\n" + "}";
+                client.Send(new MailMessage(ConfigurationManager.AppSettings["emailname"], ConfigurationManager.AppSettings["emailname2"], '"' + FirstCharToUpper(teamname) + '"' + " (" + teamtier + ")", mailtext));
+                Response.Write("<script>alert('Thank you! Your team has been submitted for review.');</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('Error! Please complete the Captcha before submitting!');</script>");
+            }
+        }
+        else
+        {
+            Response.Write("<script>alert('Error! Please complete the Captcha before submitting!');</script>");
+        }
+
+    }
+
+    <script>
+
+        $('.hamburger-menu').hover(function () {
+            $('.hamburger-menu-span').toggleClass('hover-menu');
+            $('.hamburger-menu-text').toggleClass('hover-text');
+
+        })
+
+        $('.hamburger-menu').click(function () {
+            $('.side-menu div').toggleClass('active');
+            $('.hamburger-menu').toggleClass("active");
+            $('.hamburger-menu-text').toggleClass('active');
+            $('.hamburger-menu-span').toggleClass("change");
+            $('.side-menu').toggleClass('active');
+
+        })
+
+    </script>
+</body>
+
+</html>

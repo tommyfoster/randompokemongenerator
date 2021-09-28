@@ -1,0 +1,1160 @@
+version 26.3 (02/07/2021):
+
+-Smogon tier changes
+
+version 25.3 (14/06/2021):
+
+-Smogon tier changes
+
+version 25.2 (15/04/2021):
+
+-Smogon tier changes
+
+version 25.1 (04/03/2021):
+
+-Smogon tier changes
+
+version 25.0 (16/02/2021):
+
+-Smogon tier changes
+-added special EV case for Brine Walrein
+-fixed an issue with importing Sirfetch'd
+-added 2 more preset teams
+
+version 24.1 (13/01/2021):
+
+-added 'Triple Axel' to recommended moves of Tsareena, Hitmontop and Gallade
+-added 'Synthesis' to recommened moves of Comfey
+-added 3 more preset teams
+
+version 24.0 (23/12/2020):
+
+-now exports shinies properly
+
+version 23.1 (21/12/2020):
+
+-Smogon tier changes for December
+
+version 23.0 (27/11/2020):
+
+-added 8 more preset teams
+-added Zacian/Zamazenta 'Crowned' formes
+
+version 22.2 (01/11/2020):
+
+-Smogon tier changes
+
+version 22.1 (25/10/2020):
+
+-added 2 more preset teams
+
+version 22.0 (24/10/2020):
+
+-added all new Crown Tundra DLC content (including Pokemon from older generations)
+
+version 21.61 (19/10/2020):
+
+-prevented 'Rest' and 'Synthesis' on same moveset (e.g. Roselia)
+
+version 21.6 (13/10/2020):
+
+-added 3 more preset teams
+
+version 21.5 (26/08/2020):
+
+-added 4 more preset teams
+
+version 21.4 (13/08/2020):
+
+-added Zarude
+-added 2 more preset teams
+
+version 21.3 (02/08/2020):
+
+-Smogon tier changes for 02/08/2020 added
+-added 1 more preset team
+
+version 21.2 (29/07/2020):
+
+-added 2 more preset teams
+
+version 21.1 (15/07/2020):
+
+-added 4 more preset teams
+
+version 21.0 (06/07/2020):
+
+-Smogon tier changes for 01/07/20 added
+-fixed a bug whereby Necrozma-Dawn/Dusk would ONLY get their signature moves
+-slight performance increase (code optimisation around loops)
+-Flip Turn now validates 'Volt-Turn' check
+-fixed moveset generation for Darumaka/Darmanitan-G
+-added 3 more preset teams
+
+version 20.0 (21/06/2020):
+
+-added all Pokemon and moves from Isle of Armor DLC
+-'Grassy Glide' now validates 'priority' check
+-Sirfetch'd now has a 50% chance to get 'Stick' as recommended item
+
+version 19.0 (03/06/2020):
+
+-greatly improved generation speed (code optimisation around formes and loops)
+-improved moveset generation for Pokemon from previous generations and NFEs especially (e.g. Torracat)
+-prevented any old moves (e.g. Pursuit) from being generated
+
+version 18.4 (15/05/2020):
+
+-added 5 more preset teams
+
+version 18.3 (21/04/2020):
+
+-added 3 more preset teams
+
+version 18.2 (04/04/2020):
+
+-added 5 more preset teams
+
+version 18.1 (09/03/2020):
+
+-added 2 more preset teams
+
+version 18.0 (02/03/2020):
+
+-updated learnsets following release of Pokémon Home
+-Cinderace with Court Change now gets Heavy-Duty Boots as recommended item
+-Court Change now validates 'spinner' check
+-Heavy-Duty Boots is now the recommended item for any Spinner/Defogger weak to rocks
+-disabled hidden abilities for gen 8 starters (currently unreleased)
+-fixed item detection from preset teams and imports
+-Flame Orb now given priority over Toxic Orb (except certain cases e.g. Zangoose)
+-PU tier released
+-added 3 more preset teams
+
+version 17.1 (16/02/2020):
+
+-added mega evolutions to 'National Dex' tier
+-added 1 more preset team
+
+version 17.0 (12/02/2020):
+
+-added NU tier
+-added animated model for gen 8 pokes
+-Rapid Spin now counts as a boosting move for checklist
+-added 1 more preset team
+
+version 16.2 (30/01/2020):
+
+-added 2 more preset teams
+-added 'National Dex' tier
+
+version 16.1 (25/01/2020):
+
+-added 4 more preset teams
+
+version 16.0 (20/01/2020):
+
+-fixed list of available Pokemon in Sword/Shield
+-removed all previous preset teams
+-fixed importing of certain items (e.g. Wiki Berry)
+-added 4 more preset teams
+
+version 15.0 (08/12/2019):
+
+-added gen 8 Pokemon
+-changed recommended item of Unfezant to Razor Claw (50% chance)
+-fixed selection of region-specific Pokemon when filtering by region (e.g. Raticate-Alola is Alola, not Kanto)
+
+version 14.0 (08/11/2019):
+
+-added 5 more preset teams
+-Dedenne nickname always 'Chippy'
+-Tentacool nickname always 'Kenny'
+
+version 13.1 (04/09/2019):
+
+-added 5 more preset teams
+
+version 13 (14/09/2019):
+
+-home now redirects to twitch page when streaming
+-added 'east' variants of Shellos & Gastrodon
+-added 3 more preset teams
+
+version 12.0 (04/08/2019):
+
+-added 7 more preset teams
+-removed LC as a preset teams category
+-added ZU as a preset teams category
+
+version 11.1 (31/07/2019):
+
+-added 1 more preset team
+
+version 11.0 (07/07/2019):
+
+-added 4 more preset teams
+-fixed 1 existing preset team
+-added ZU tier
+
+version 10.3 (22/06/2019):
+
+-added 4 more preset teams
+
+version 10.2 (16/06/2019):
+
+-fixed team submission functionality
+-removed oldest 75% of preset teams (cleanup)
+
+version 10.1 (25/05/2019):
+
+-changed colour of strong/weak zone numbers from black to #f3dd79
+-fixed all checkboxes in checklist area
+
+version 10.0 (22/05/2019):
+
+-major CSS rewrite
+-fully mobile compatible
+
+version 9.1 (19/08/2018):
+
+-added 7 more preset teams
+
+version 9.0 (24/07/2018):
+
+-added 9 more preset teams
+-Zeraora enabled
+-added 'Hackmons' as a tier (all pokemon with any ability and any moves)
+
+version 8.6 (11/06/2018):
+
+-added 3 more preset teams
+
+version 8.5 (05/05/2018):
+
+-added 2 more preset teams
+-changed recommended item for Dedenne to Petaya Berry (2 special attacks or more) or Sitrus/Starf Berry (50/50 chance)
+
+version 8.4 (14/04/2018):
+
+-added 5 more preset teams
+
+version 8.3 (14/03/2018):
+
+-added 4 more preset teams
+
+version 8.2 (22/02/2018):
+
+-added 4 more preset teams
+
+version 8.13 (07/02/2018):
+
+-added 3 more preset teams
+
+version 8.12 (31/01/2018):
+
+-added 2 more preset teams
+
+version 8.11 (21/01/2018):
+
+-updated to moving models for USUM additions (e.g. Lycanroc-Dusk)
+
+version 8.1 (18/01/2018):
+
+-added 9 more preset teams
+
+version 8.0 (11/01/2018):
+
+-updated recommended Silvally movesets
+-updated recommended Lycanroc movesets
+-added 12 more preset teams
+
+version 7.1 (29/12/2017):
+
+-added 5 more preset teams
+
+version 7.02 (09/12/2017):
+
+-added 2 more preset teams
+
+version 7.01 (02/12/2017):
+
+-added 1 more preset team
+
+version 7.0 (18/11/2017):
+
+-updated for Ultra Sun/Ulta Moon (pokedex, items, moves, tierlist, learnsets)
+
+version 6.13 (15/11/2017):
+
+-added 1 more preset team
+
+version 6.12 (25/10/2017):
+
+-added 1 more preset team
+
+version 6.11 (18/10/2017):
+
+-added 1 more preset team
+-Vulpix no longer gets 'Drought' outside of OU or Ubers
+
+version 6.1 (28/09/2017):
+
+-all models now stored locally on site
+-SSL certificate installed
+-added 2 more preset teams
+
+version 6.0 (21/09/2017):
+
+-added 2 more preset teams
+-added Google Adsense
+
+version 5.2 (12/09/2017):
+
+-added 5 more preset teams
+
+version 5.1 (04/09/2017):
+
+-Flareon with 'Facade' will always get 'Guts' as recommended ability
+-added 6 more preset teams
+
+version 5.01 (15/08/2017):
+
+-fixed a bug where Pyukumuku would cause an infinite loop
+
+version 5.0 (13/08/2017):
+
+-added 6 more preset teams
+
+version 4.33 (23/07/2017):
+
+-added 2 more preset teams
+
+version 4.32 (14/07/2017):
+
+-added 2 more preset teams
+
+version 4.31 (06/07/2017):
+
+-added recommended movelist for Castform
+-added recommended movelist for Rayquaza-Mega
+-can no longer get more than 1 of Sunny Day/Hail/Rain Dance on the same moveset (Castform)
+-can no longer get 'Baton Pass' (Smogon rule)
+-added fix for issue where sometimes mobile devices keep abilities from previous Pokémon
+
+version 4.3 (03/07/2017):
+
+-can no longer get 'Fiery Dance' and 'Flamethrower'/'Fire Blast' on the same moveset
+-can no longer get 'Volt Switch' and 'Agility' on the same moveset
+-can no longer get 'Nasty Plot' and 'Haze' on the same moveset
+-improved EV generation regarding weather abusers (e.g. 'Swift Swim' Ludicolo with 'Rain Dance' now gets max speed)
+-Marshadow released
+-added 3 more preset teams
+
+version 4.2 (25/06/2017):
+
+-Primarina evolutionary line now gets 'Torrent' as recommended ability
+-Drizzle & Drought no longer show up below OU
+-added 5 more preset teams
+
+version 4.1 (17/06/2017):
+
+-added 5 more preset teams
+
+version 4.0 (11/06/2017):
+
+-added 5 more preset teams
+-tiers are now fully implemented
+
+version 3.1 (29/05/2017):
+
+-added 3 more preset teams
+
+version 3.01 (27/05/2017):
+
+-added 1 more preset team
+
+version 3.0 (20/05/2017):
+
+-added 3 more preset teams
+-added Recaptcha to team submission form
+
+version 2.91 (06/05/2017):
+
+-added 1 more preset team
+
+version 2.9 (14/04/2017):
+
+-changed ad provider
+-added 4 more preset teams
+
+version 2.8 (08/04/2017):
+
+-added 5 more preset teams
+
+version 2.7 (01/04/2017):
+
+-added 3 more preset teams
+
+version 2.6 (26/03/2017):
+
+-added 5 more preset teams
+
+version 2.5 (18/03/2017):
+
+-added 4 more preset teams
+-Rotom formes now show all Hidden Power types correctly
+
+version 2.4 (10/03/2017):
+
+-added 4 more preset teams
+
+version 2.31 (25/02/2017):
+
+-added 2 more preset teams
+-updated 1 preset team
+
+version 2.3 (18/02/2017):
+
+-'Galvanize' now correctly types normal type moves as electric
+-'Triage' with 'Draining Kiss' now considered priority
+-added 2 more preset teams
+
+version 2.2 (08/02/2017):
+
+-reverted back to previous ad banner provider
+-added 4 more preset teams
+
+version 2.11 (29/01/2017):
+
+-added 1 more preset team
+
+version 2.1 (28/01/2017):
+
+-changed ad banner provider
+-added 3 more preset teams
+
+version 2.0 (21/01/2017):
+
+-added 3 more preset teams
+-Shaymin/Shaymin-Sky movesets now show correctly
+-randomiser now generates 'viable' movesets for fully evolved Alola pokemon
+
+version 1.81 (15/01/2017):
+
+-'Parting Shot' now checks 'Volt-Turn' checkbox
+
+version 1.8 (14/01/2017):
+
+-Passimian's hidden ability (Defiant) marked as unreleased
+-added 3 more preset teams
+
+version 1.71 (11/01/2017):
+
+-Wishiwashi now imports correctly
+
+version 1.7 (08/01/2017):
+
+-added 2 more preset teams
+
+version 1.6 (07/01/2017):
+
+-added 2 more preset teams
+-added ad banner on right hand side of generator
+
+version 1.5 (02/01/2017):
+
+-added 2 more preset teams
+-all minior formes now import correctly
+-'Revelation Dance' now works for 'Strong Against' section with different Oricorio formes
+
+version 1.4 (28/12/2016):
+
+-added 1 more preset team
+-added 'Alola' to region filter
+
+version 1.3 (24/12/2016):
+
+-added 2 more preset teams
+-Alolan Marowak now gets 'Thick Club' as recommended item
+-'Multi-Attack' now works for 'Strong Against' section with different Silvally types
+
+version 1.2 (19/12/2016):
+
+-fixed movesets for Rotom formes
+-Zygarde and Zygarde-10% always get Aura Break as recommended ability (Zygarde-Complete considered separate)
+-fixed model for Zygarde-10%
+-added 1 more preset team
+
+version 1.1 (17/12/16):
+
+-fixed image links for Jangmo-o line
+
+version 1 (10/12/16):
+
+-initial release
+-all gen 7 pokes marked as OU until first tierlist released
+-all gen 7 pokes have non-viable random movesets until tierlist released
+
+--------------------------------------------------------------------------------------------
+Release of Pokemon Sun/Moon
+--------------------------------------------------------------------------------------------
+
+
+version 1:
+
+-initial release
+
+version 2:
+
+-title moved, pokemon containers expanded
+-average stats section replaced with coloured bars for visual representation
+-'strong against' highlights any value of 0 in red and bold
+-'weak against' highlights any value >=3 in red and bold
+-lowered the chance of getting a random pokemon from a tier below filter choice
+-added pokemon abilities
+-added 3 items to checklist
+-weakness checker takes abilities into account (e.g. levitate)
+-added LC and NFE to tiers list
+
+version 2.1:
+
+-removed useless items from randomiser (poke balls, incense, fossils etc)
+-randomiser generates maximum of 1 mega per roll
+
+version 3:
+
+-added functionality to copy 'Showdown format' plaintext of team
+-set a minimum width for the page (should improve appearance on mobile devices)
+
+version 3.1:
+
+-fixed an issue where locking a mega pokemon would cause an infinite loop
+
+version 3.2:
+
+-fixed an issue where choosing 'LC' and either 'Steel', 'Ice' or 'Fighting' would cause an infinite loop
+-fixed an issue where Dusclops would sometimes appear in LC
+
+version 4:
+
+-added functionality to import plaintext teams from showdown
+
+version 5:
+
+-added a section for preset teams (3 added now, more will be added in the future)
+-removed several useless berries from randomiser (no competitive use)
+-randomiser generates maximum of 1 Hidden Power per poke (except Unown)
+
+version 5.1:
+
+-weakness checker takes Thick Fat and Heatproof into account
+-Hidden Power now has the same chance of appearing as any other move
+
+version 5.2:
+
+-added 5 more preset teams
+
+version 5.3:
+
+-added 4 more preset teams
+-fixed movelist for Smeargle
+
+version 5.4:
+
+-all Arceus and Genesect formes now show up in lists
+-Arceus/Genesect now appear at the correct rate when randomising
+-all Arceus and Genesect formes now always have the correct item
+-changing a 'drive' on Genesect or a 'plate' on Arceus changes its form accordingly
+-Techno Blast and Judgment are now recognised correctly by strength checker
+
+version 5.5:
+
+-added PU as a tier option
+
+version 6:
+
+-randomiser now generates 'viable' movesets
+
+version 7:
+
+-user has the choice of 'viable' or random sets
+-'viable' sets also include item and ability
+
+version 7.1:
+
+-fixed a problem where the most 'viable' ability would sometimes not be chosen
+
+version 7.2:
+
+-improved appearance for some browsers (stopped type images from being cutoff)
+-added PU, NFE and LC to preset teams
+-added 4 more preset teams
+
+version 7.25:
+
+-added 1 more preset team
+
+version 7.3:
+
+-fixed movesets of Shaymin and Shaymin-sky
+-added 5 more preset teams
+
+version 7.35:
+
+-fixed movesets of Vanillite line (and stopped a crashing issue)
+
+version 8:
+
+-guaranteed to receive at least 1 STAB move when randomising with 'viable' sets (unless there are no viable STAB moves e.g. Chansey)
+-added 1 more preset team
+
+version 8.1:
+
+-prevented illegal moves from appearing in random sets (OHKO moves, evasion moves)
+-prevented Moody from being generated as an ability
+-added 1 more preset team
+
+version 8.2:
+
+-added a few more tooltips (filter zones, padlocks, checklist title, showdown title and average stats zone)
+
+version 8.21:
+
+-fixed an issue where Igglybuff/Jigglypuff would take extremely long to choose 'viable' moves
+-fixed Cleffa's moveset (does not learn Moonblast)
+
+version 8.22:
+
+-Drizzle and Drought no longer appear below OU
+
+version 9:
+
+-exporting to Showdown now gives recommended EVs and nature
+
+version 9.01:
+
+-Belly Drum now counts as a boosting move
+
+version 9.02:
+
+-added 1 more preset team
+
+version 9.03:
+
+-added 1 more preset team
+
+version 10:
+
+-added the ability to randomise nicknames
+
+version 11:
+
+-updated list of pokemon and movesets for Omega Ruby/Alpha Sapphire
+
+version 11.01:
+
+-fixed a problem where selecting 'random' movesets with Drought/Drizzle pokes would cause an infinite loop
+-Mega-Rayquaza is now guaranteed Dragon Ascent (required move) when randomising movesets
+
+version 11.1:
+
+-added cosplay Pikachu formes
+-added 2 more preset teams
+
+version 11.2:
+
+-Gale Wings now recognised as priority
+-added 1 more preset team
+
+version 11.3:
+
+-improved recommended EVs algorithm (max speed given to pokes with Quiver Dance, Shell Smash etc)
+-fixed Cleffa's moveset (again)
+-Stealth Rock & Shell Smash will not appear on the same moveset
+-added 1 more preset team
+
+version 11.4:
+
+-Pokemon with Fake Out or Sucker Punch will not be given Choice Band as item
+-Rindo Berry and Occa Berry are no longer recommended items
+-cannot get more than one out of [Fire Blast, Lava Plume, Flamethrower] and [Scald, Surf, Hydro Pump] on the same moveset
+-reduced frequency of air balloon (only if 4x weak or if 2x weak and <75 base def)
+
+version 11.41:
+
+-fixed a problem where the Typhlosion evolutionary line would cause an infinite loop
+
+version 11.42:
+
+-preset teams text area is now read-only
+
+version 11.5:
+
+-cannot get Psychic and Psyshock on the same moveset
+-cannot get Substitute with U-turn or Volt Switch on the same moveset
+-Naive nature is now the default when no other nature seems appropriate (previously Serious nature)
+-Raikou has Rash nature with Aura Sphere
+-Entei has Adamant nature with Extreme Speed
+
+version 11.6:
+
+-fixed an issue where Smeargle would get Spore twice in the same moveset
+-added 1 more preset team
+
+version 11.61:
+
+-added 1 more preset team
+
+version 11.7:
+
+-recommended set fixes relating to Guts ability (Raticate guaranteed Guts, Conkeldurr line gets it
+75% of the time)
+-Conkeldurr gets Assault Vest 75% of the time, otherwise Flame Orb or Life Orb
+
+version 11.71:
+
+-added 1 more preset team
+
+version 11.8:
+
+-added 1 more preset team
+-Curse is now recognised as a status move for ghosts, and a boosting move otherwise
+-stat lowering moves (e.g. Tail Whip) are no longer counted as 'boosting moves'
+
+version 11.9:
+
+-added 2 more preset teams
+
+version 11.91:
+
+-Chinchou/Lanturn get Volt Absorb ability 75% of the time, Water Absorb otherwise
+-Cannot get Rock Slide and Stone Edge on the same moveset
+
+version 12:
+
+-Stone Edge replaced by Rock Slide in Rampardos' recommended movelist (Sheer Force boosted)
+-cannot get Rock Slide, Stone Edge or Rock Blast on the same moveset
+-Porygon2 always gets Eviolite as item
+-Dugtrio always gets Focus Sash as item
+-Healing Wish is now considered a 'recovery move' and a 'cleric' move
+-Leech Seed is now considered a 'recovery move'
+
+version 12.1:
+
+-Moxie now counts as a 'boosting move'
+-Litleo/Pyroar get Unnerve ability 75% of the time, Rivalry otherwise
+-added 4 more preset teams
+
+version 12.11:
+
+-Fairy typing now nullifies dark weakness on a poke (e.g. Mr. Mime)
+
+version 12.5:
+
+-Watchog now gets Analytic as recommended ability
+-Ground types are no longer given Lightning Rod as ability (e.g. Marowak)
+-Hariyama/Makuhita now get either Thick Fat or Guts as ability (50/50 split)
+-Purugly now gets Defiant or Thick Fat as recommended ability (75/25 split)
+-Ambipom now gets Techician as recommended ability
+-Snover/Abomasnow now get Soundproof or Snow Warning as recommended ability (50/50 split)
+-Wooper/Quagsire now get Unaware as recommended ability
+-Magnemite/Magneton/Magnezone now get either Magnet Pull or Analytic as recommended ability (50/50 split)
+-Braviary now gets Defiant as recommened ability
+-Remoraid/Octillery now get Sniper as recommended ability
+-Druddigon recommended abilities changed: Sheer Force 50% chance if a move benefits, else Mold Breaker if EQ is present 50% chance, else Rough Skin
+-Relicanth recommended ability is Rock Head if moveset contains Head Smash or Double-Edge, Sturdy otherwise
+-Tyrantrum recommended ability is Rock Head if moveset contains Head Smash, Strong Jaw otherwise
+-Hitmonlee recommended ability is Unburden if moveset contains Fake Out + Normal Gem, otherwise Reckless (if HJK present) or Limber
+-Hitmontop recommended ability may be Technician (50% chance) if moveset contains Mach Punch or Bullet Punch, otherwise Intimidate
+-Luxray/Luxio/Shinx recommmended ability is Guts if moveset contains Facade, else 50/50 split between Guts and Intimidate
+-Added 'Bullet Punch' to list of viable moves for Hitmontop
+-Added 'Fake Out' to list of viable moves for Hitmonlee
+-Added 'Gunk Shot' to list of viable moves for Druddigon
+-Added 'Head Smash' to list of viable moves for Tyrantrum
+-Cannot get Zen Headbutt & Psychic/Psyshock on the same moveset
+-Cannot get Fire Punch & Flare Blitz on the same moveset
+-'Keen Eye' viability (Smogon ratings) reduced from 1 to 0.5
+
+version 12.6:
+
+-added 1 more preset team
+
+version 12.7:
+
+-added 3 more preset teams
+
+version 12.8:
+
+-added 1 more preset team
+
+version 12.81:
+
+-'Freeze Dry' now recognised as being strong against water
+
+version 12.9:
+
+-you can now click on a Pokemon's image to make it shiny, also able to import/export shinies
+
+version 12.91:
+
+-fixed an issue when randomly selecting from tier below (e.g. Honedge would never appear in PU + Steel filter)
+
+version 12.92:
+
+-Cinccino will get Technician as ability 1/3 of the time if 'Wake-Up Slap' is present. Else, gets Skill Link
+-cannot get 'Tail Slap' and 'Return' in the same moveset
+
+version 12.93:
+
+-'Phaser' changed to 'P/hazer' to include 'Haze'
+
+version 12.94:
+
+-added 1 more preset team
+
+version 12.95:
+
+-removed 'Trick' from list of viable moves for Porygon2
+-Froslass now gets 'Focus Sash' as recommended item
+
+version 12.96:
+
+-'P/hazer' now includes 'Clear Smog'
+-added 1 more preset team
+
+version 13:
+
+-'Aerilate', 'Pixilate' and 'Refrigerate' are now factored into 'strong against' calculations
+-'Nature Power' is now recognised as an offensive move (default is 'Tri-Attack')
+-Chansey now gets "252 HP / 252 Def / 4 SpD" as recommended EV spread
+-Sylveon is now guaranteed 'Hyper Voice' as a move when 'Pixilate' is the ability
+
+version 13.5:
+
+-hovering over a Pokemon's image now gives details on typing and base stats
+-added Hoopa & Hoopa-Unbound
+-added 1 more preset team
+
+version 13.6:
+
+-removed 11 preset teams (no longer valid in current tiers)
+-added 6 more preset teams
+
+version 13.7:
+
+-'Lunar Dance' now checks 'Cleric' and 'Recovery' boxes
+-recommended abilities for Raikou/Entei/Suicune set to 'Pressure' (HAs unreleased)
+
+version 13.8:
+
+-fixed Hoopa-Unbound's image
+-can no longer get Assault Vest Conkeldurr with 'Bulk Up'
+-can no longer get 'Dragon Dance' and 'Dragon Tail' in the same moveset
+-new Smogon 'Baton Pass Clause' implemented (can pass Speed OR other stats, but not BOTH; e.g. cannot get 'Quiver Dance' + 'Baton Pass')
+-cannot get 'Nasty Plot' with <2 special moves, cannot get 'Swords Dance' with <2 physical moves, cannot get 'Calm Mind' with <1 special move
+-Chimchar/Monferno/Infernape only get 'Iron Fist' with Mach Punch/Fire Punch/Thunder Punch, otherwise 'Blaze'
+
+version 13.81:
+
+-cannot get 'Coil' with <1 physical move
+-cannot get 'Thunderbolt' and 'Wild Charge' in the same moveset
+-more likely to get Assualt Vest as item (changed criteria, e.g. for Eelektross)
+-cannot get 'Sleep Talk' without 'Rest'
+-cannot get 'Stealth Rock' and 'Substitute' in the same moveset (useful for Uxie/Mesprit)
+
+version 13.82:
+
+-Staravia/Staraptor have a 50% chance to get 'Reckless' as ability with 'Double-Edge' or 'Brave Bird'. 'Intimidate' otherwise.
+
+version 13.83:
+
+-added 1 more preset team
+
+version 13.84:
+
+-Smeargle now guaranteed 'Own Tempo' as ability
+
+version 13.85:
+
+-added 'Substitute' to list of valid moves for Hawlucha
+-Genesect with 'Extreme Speed' is now Hasty nature (event poke)
+-Hawlucha will get 'Unburden' as ability and 'Sitrus Berry' as item if 'Substitute' is present
+
+version 13.86:
+
+-Genesect with 'Shift Gear' or 'Blaze Kick' is now Hasty nature (event poke)
+
+version 13.87:
+
+-added 1 more preset team
+
+version 13.88:
+
+-added 1 more preset team
+
+version 13.89:
+
+-added 1 more preset team
+
+version 14:
+
+-removed 10 (old) preset teams
+-Gourgeist/Pumpkaboo formes now get 'Frisk' as ability ('Insomnia' is unreleased)
+-added 1 more preset team
+
+version 15:
+
+-users can now submit teams through the 'Pre-made Teams' section (to be reviewed and potentially added to preset teams)
+
+version 15.01:
+
+-'Lightning Rod' now removes weakness to electricity (e.g. for Seaking)
+-replaced 'Knock Off' checkbox with 'Volt-turn' checkbox
+
+version 16:
+
+-added 15 more preset teams
+-improved import function (removes trailing whitespace on each line)
+
+version 16.1:
+
+-added 13 more preset teams
+
+version 16.11:
+
+-added 1 more preset team
+
+version 17:
+
+-can no longer submit teams with a blank team field (prevent some spam)
+-removed 1 (old) preset team
+-added 13 more preset teams
+-can now import Keldeo-Resolute correctly (but shows as regular Keldeo)
+
+version 17.01:
+
+-added 1 more preset team
+
+version 17.2:
+
+-added 8 more preset teams
+
+version 17.21:
+
+-added 'Sludge Bomb' as a move for Zoroark (event move)
+-Zoroark gets either 'Focus Sash' or 'Life Orb' as recommended item (50/50 chance)
+-added 'Night Daze' as a recommended move for Zoroark
+-cannot get 'Dark Pulse' and 'Night Daze' on the same moveset
+
+version 18:
+
+-added 9 more preset teams
+-export box is now read-only
+-export box and preset boxes highlight all text when clicked on
+
+version 18.1:
+
+-added 1 more preset team
+
+version 18.2:
+
+-Zapdos/Articuno/Moltres now get 'Pressure' as recommended ability (HAs unreleased)
+
+version 19:
+
+-cannot get 'Leaf Blade' and 'Giga Drain' on the same moveset
+-cannot get 'Bulk Up' or 'Dragon Dance' if moveset contains any special moves
+-fixed movesets of Pikachu cosplay formes
+-can no longer submit a team without a team name (prevent some spam)
+-added 6 more preset teams
+
+version 20:
+
+-Piplup/Prinplup/Empoleon now get Torrent as recommended ability (Defiant mostly useless)
+-added 11 more preset teams
+
+version 20.1:
+
+-cannot get 'Dragon Dance' and 'Bulk Up' on the same moveset
+-Smeargle now gets "252 HP / 4 Def / 252 Spe" as recommended EV spread
+-improved mail code (quicker importing into presets)
+
+version 20.11:
+
+-Flareon no longer gets Flame Orb as recommended item
+
+version 20.2:
+
+-removed 6 (old) preset teams
+-added 4 more preset teams
+
+version 20.3:
+
+-increased team submission 'name' field to 25 (from 20)
+-added 7 more preset teams
+
+version 20.4:
+
+-added 3 more preset teams
+
+version 20.5:
+
+-added 9 more preset teams
+-mail code removes trailing whitespace from team submissions (easier importing)
+-mail code converts team names to lower case (with 1st letter of each word capitalised)
+
+version 20.6:
+
+-added 4 more preset teams
+
+-version 20.61:
+
+-added 'Dazzling Gleam' to Delphox's moveset
+
+version 20.7:
+
+-added 8 more preset teams
+
+version 20.71:
+
+-released hidden abilities for legendary bird trio
+-Swoobat/Woobat only get 'Simple' with a boosting move
+-Magmar evolutionary line gets 'Flame Body' or 'Vital Spirit' as ability (50/50 ratio)
+-can only get 'Stored Power' when a boosting move is present
+-added 'Signal Beam' to list of viable moves for Swoobat and Woobat
+
+version 20.8
+
+-YouTube button automatically prompts to add subscription
+-Twitter button automatically prompts to add follow
+-changed donation button to Twitch button
+-added 5 more preset teams
+
+version 21:
+
+-improved speed of random generation (updated move randomiser algorithm)
+-cannot get 'Rock Polish' and 'Roar' on the same moveset
+-cannot get 'Bonemerang' and 'Earthquake' on the same moveset
+-cannot get 'Close Combat' and 'Dynamic Punch' on the same moveset
+-cannot get 'Shell Smash' when less than 2 offensive moves are present
+-cannot get 'Switcheroo' or 'Trick' in combination with 'Bulk Up' or 'Calm Mind'
+-changed Slurpuff/Swirlix recommended movesets to physical oriented and fixed ability (Belly Drum = Unburden)
+-Geodude evolutionary line now gets 'Sturdy' as recommended ability
+-Deerling/Sawsbuck now get 'Sap Sipper' as recommended ability
+-Butterfree now gets 'Compound Eyes' as ability 50% of the time when 'Sleep Powder' is present, else 'Tinted Lens'
+-Dusclops/Dusknoir now get 'Frisk' as recommended ability
+-Ponyta/Rapidash now get 'Flame Body' as recommended ability 50% of the time, else 'Flash Fire'
+-Ponyta/Rapidash can now get 'Will-o-Wisp' as a recommended move
+-Seel/Dewgong now get 'Thick Fat' as recommended ability
+-Spheal/Sealeo/Walrein now get 'Thick Fat' as recommended ability
+-Gothita evolutionary line now get 'Frisk' as recommended ability 1/3 of the time, else 'Competitive'
+-Wynaut/Wobbuffet now get 'Telepathy' as recommended ability
+-Kingler can now get 'Rock Slide' as a recommended move
+-Elgyem/Beheeyem now get 'Synchronize' as recommended ability where 'Trick Room' is present, else 'Analytic'
+-Meowstic-F now gets 'Infiltrator' or 'Competitive' as recommended ability (50/50 ratio)
+-Snorunt/Glalie now get 'Inner Focus' as recommended ability
+-Rhyperior now gets 'Solid Rock' as recommended ability
+-Gulpin/Swalot now get 'Sticky Hold' as recommended ability 2/3 of the time, else 'Liquid Ooze'
+-Machop evolutionary line now gets 'No Guard' as recommended ability where 'Dynamic Punch' is present, else 'Guts'
+-Machop evolutionary line can now get 'Close Combat' as a recommended move
+-replaced 'X-Scissor' with 'Bug Bite' in Kricketune's recommended movelist
+-Hoothoot/Noctowl now get 'Tinted Lens' as recommended ability 50% of the time when 'Air Slash' is present, else 'Insomnia'
+-Vanillite evolutionary line now gets 'Weak Armor' as recommended ability
+-Mr. Mime/Mime Jr. now only get 'Technician' if 'HP Fighting' is present, else either 'Filter' or 'Soundproof' (50/50 ratio)
+-Sunkern/Sunflora get 'Solar Power' or 'Chlorophyll' as recommended ability (50/50 ratio) when 'Sunny Day' is present, else 'Early Bird'
+-Persian only gets 'Technician' as recommended ability when 'Fake Out' is present
+
+version 21.1:
+
+-added 3 more preset teams
+
+version 21.11:
+
+-fixed an issue where sometimes 'Hidden Power' would appear twice in a moveset (e.g. Magneton)
+
+version 21.2:
+
+-added 3 more preset teams
+-upgraded mailcode (filters out some spam)
+
+version 21.3:
+
+-added 5 more preset teams
+
+version 21.4:
+
+-added 2 more preset teams
+-can no longer get 'Curse' and 'Swords Dance' on the same moveset
+-Dragonite now gets 'Choice Band' as item if 4 attacks, else 'Lum Berry'
+-improved mail code (name works with apostrophes)
+
+version 21.5:
+
+-added 2 more preset teams
+
+version 21.6:
+
+-added 1 more preset team
+
+version 21.7:
+
+-can no longer get 'Zen Headbutt' and 'Psycho Cut' on the same moveset
+-added 2 more preset teams
+
+version 21.8:
+
+-added 1 more preset team
+
+version 21.9:
+
+-added 1 more preset team
+
+version 22:
+
+-added 5 more preset teams
+
+version 22.1:
+
+-added animated model for Pikachu-Belle
+-added colour variations for Florges evolutionary line
+-added 1 more preset team
+
+version 23:
+
+-added 7 more preset teams
+
+-version 23.5:
+
+-added 4 more preset teams
+-lists now sort correctly (previously capital Z would be before lower a)
+
+-version 24:
+
+-added 5 more preset teams
+
+version 25:
+
+-updated SD Lickilicky (PU) team
+-added 4 more preset teams
+
+version 26:
+
+-added 4 more preset teams
+-can no longer get 'Fire Blast' and 'Overheat' on the same moveset
+-can no longer get 'Body Slam' and 'Return' on the same moveset
+-can no longer get 'Scald' and 'Waterfall' on the same moveset
+-can no longer get 'Toxic Spikes' and 'Shell Smash' on the same moveset
+
+version 27:
+
+-added 7 more preset teams
+-can no longer get 'Fire Blast' and 'Fire Punch' on the same moveset
+
+version 27.1:
+
+-added 2 more preset teams
+
+version 27.2:
+
+-added 2 more preset teams

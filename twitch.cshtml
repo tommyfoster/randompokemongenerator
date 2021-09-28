@@ -1,0 +1,150 @@
+﻿@using System.Net.Mail;
+@using System.Configuration;
+
+@{
+
+    string rawdata = "";
+    bool islive = false;
+    try
+    {
+        //Pyrotoz
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.twitch.tv/helix/streams?user_id=8906620");
+        //OverwatchLeague
+        //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.twitch.tv/helix/streams?user_id=137512364");
+        request.Headers.Add("Client-ID", ConfigurationManager.AppSettings["apikey"]);
+
+        request.ContentType = "application/json";
+
+        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+        {
+            using (Stream stream = response.GetResponseStream())
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    rawdata = reader.ReadToEnd();
+                }
+
+            }
+
+        }
+
+        var jsondata = Json.Decode(rawdata);
+        if (jsondata.data[0].id != null) { islive = true; }
+    }
+    catch (Exception e)
+    {
+    }
+
+
+}
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" rel="stylesheet" href="stylesheet.css" />
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,700i" rel="stylesheet">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+
+</head>
+
+
+
+<body>
+
+    <div class="div-header">
+        <div class="hamburger-menu">
+            <div>
+                <span class='hamburger-menu-span'></span>
+                <span class='hamburger-menu-span'></span>
+                <span class='hamburger-menu-span'></span>
+            </div>
+            <p class='hamburger-menu-text'>MENU</p>
+        </div>
+    </div>
+
+    <div class="side-menu">
+        <div>
+            <ul>
+                <li>
+                    @if (islive)
+                    {
+                        <a href="~/index.cshtml?redirect=home">
+                            <img src="images/pokeball.png" alt="" title='Random Pokémon Generator'>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="~/index.cshtml">
+                            <img src="images/pokeball.png" alt="" title='Random Pokémon Generator'>
+                        </a>
+                    }
+                </li>
+                <li>
+                    <a href="~/twitch.cshtml">
+                        @if (islive)
+                        {
+                            <img src="~/Images/twitch-live-animation.gif" alt="" title='Now LIVE on Twitch'>
+                        }
+                        else
+                        {
+                            <img src="images/twitch.png" alt="" title='Twitch'>
+                        }
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/intent/follow?screen_name=Pyrotoz&tw_p=followbutton" target="_blank">
+                        <img src="images/twitter.png" alt="" title='Twitter'>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.youtube.com/subscription_center?add_user=pyrotoz" target="_blank">
+                        <img src="images/youtube.png" alt="" title='YouTube'>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <center>
+        <div id="twitch-embed" style="padding-top:5%;width:90%;height:90%;align-content:center"></div>
+
+        <!-- Load the Twitch embed script -->
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+        <!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
+        <script type="text/javascript">
+            new Twitch.Embed("twitch-embed", {
+                width: "90%",
+                height: "100%",
+                theme: "dark",
+                channel: "pyrotoz"
+            });
+        </script>
+    </center>
+    <script>
+
+        $('.hamburger-menu').hover(function () {
+            $('.hamburger-menu-span').toggleClass('hover-menu');
+            $('.hamburger-menu-text').toggleClass('hover-text');
+
+        })
+
+        $('.hamburger-menu').click(function () {
+            $('.side-menu div').toggleClass('active');
+            $('.hamburger-menu').toggleClass("active");
+            $('.hamburger-menu-text').toggleClass('active');
+            $('.hamburger-menu-span').toggleClass("change");
+            $('.side-menu').toggleClass('active');
+
+        })
+
+    </script>
+</body>
