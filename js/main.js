@@ -46,7 +46,7 @@
   } 
   
 function checkfilled() {
-    if(document.getElementById('submittextname').value !== '' && document.getElementById('submitteamtext').value !== ''){
+    if(document.getElementById('submittextname').value != '' && document.getElementById('submitteamtext').value != ''){
      document.getElementById('confirmteamsubmit').disabled = false;     
     }else{
      document.getElementById('confirmteamsubmit').disabled = true;  
@@ -65,24 +65,18 @@ function makeShiny(img) {
 		for(i = testvar.length - 1; i > 0; i--) {
 			if(testvar[i] === '/') {
 				var nameExtract = testvar.substr(i+1,testvar.length);
-                if (startsWith(img.src, "https://pyrotoz.com/shinymodels/")) {
-                    img.src = "https://pyrotoz.com/models/" + nameExtract;
-                }
-                else if (startsWith(img.src, "https://pyrotoz.com/models/")) {
-                    img.src = "https://pyrotoz.com/shinymodels/" + nameExtract;
-                }
-                else if (startsWith(img.src, "https://pyrotoz.com/bwmodels/")) {
-                    img.src = "https://pyrotoz.com/bwshinymodels/" + nameExtract;
-                }
-                else if (startsWith(img.src, "https://pyrotoz.com/bwshinymodels/")) {
-                    img.src = "https://pyrotoz.com/bwmodels/" + nameExtract;
-                }
-                else if (startsWith(img.src, "https://play.pokemonshowdown.com/sprites/gen5/")) {
-                    img.src = "https://play.pokemonshowdown.com/sprites/gen5-shiny/" + nameExtract;
-                }
-                else if (startsWith(img.src, "https://play.pokemonshowdown.com/sprites/gen5-shiny/")) {
-                    img.src = "https://play.pokemonshowdown.com/sprites/gen5/" + nameExtract;
-                }
+				if(startsWith(img.src,"https://pyrotoz.com/shinymodels/")) {
+					img.src = "https://pyrotoz.com/models/" + nameExtract;
+				}
+				else if(startsWith(img.src,"https://pyrotoz.com/models/")) {
+					img.src = "https://pyrotoz.com/shinymodels/" + nameExtract;
+				}
+				else if(startsWith(img.src,"https://pyrotoz.com/bwmodels/")) {
+					img.src = "https://pyrotoz.com/bwshinymodels/" + nameExtract;
+				}
+				else if(startsWith(img.src,"https://pyrotoz.com/bwshinymodels/")) {
+					img.src = "https://pyrotoz.com/bwmodels/" + nameExtract;
+				}
 				
 				break;
 			}
@@ -152,7 +146,7 @@ function getAbilities(pokechoice) {
 	var abillist = [];
 	var listOfMoves = [];
 	
-	if(document.getElementById('tierChoice').value !== 'Hackmons') {
+	if(document.getElementById('tierChoice').value != 'Hackmons') {
 		for(elem in BattlePokedex) {
 			if(BattlePokedex[elem].species === pokechoice.value) {
 				for(elem1 in BattlePokedex[elem].abilities) {
@@ -676,12 +670,12 @@ function randomName(pokename) {
 	var randompos = 0;
 	randompos = Math.floor(Math.random()*dictionarytext.length);
 	var i = 0;
-	while(dictionarytext[randompos + i] !== '\n') {
+	while(dictionarytext[randompos + i] != '\n') {
 		i+=1;
 	}
 	//Startpoint found, now for the endpoint
 	var j = 1;
-	while((dictionarytext[randompos + i + j] !== '\n') && (dictionarytext[randompos + i + j] !== "/")) {
+	while((dictionarytext[randompos + i + j] != '\n') && (dictionarytext[randompos + i + j] != "/")) {
 		j+=1;
 	}
 	
@@ -3232,7 +3226,7 @@ function filterConflict(filter) {
 			validlist2.push(validlist[elem].species);
 		}
 		catch(err) {
-			//nothing
+			
 		}
 	}
 	
@@ -4299,27 +4293,27 @@ function getWeaknesses() {
 	
 	//**********************Check second Pokemon******************************************************
 	
-	tempweakBug = 0;
-	tempweakDark = 0;
-	tempweakDragon = 0;
-	tempweakElectric = 0;
-	tempweakFairy = 0;
-	tempweakFighting = 0;
-	tempweakFire = 0;
-	tempweakFlying = 0;
-	tempweakGhost = 0;
-	tempweakGrass = 0;
-	tempweakGround = 0;
-	tempweakIce = 0;
-	tempweakNormal = 0;
-	tempweakPoison = 0;
-	tempweakPsychic = 0;
-	tempweakRock = 0;
-	tempweakSteel = 0;
-	tempweakWater = 0;
+	var tempweakBug = 0;
+	var tempweakDark = 0;
+	var tempweakDragon = 0;
+	var tempweakElectric = 0;
+	var tempweakFairy = 0;
+	var tempweakFighting = 0;
+	var tempweakFire = 0;
+	var tempweakFlying = 0;
+	var tempweakGhost = 0;
+	var tempweakGrass = 0;
+	var tempweakGround = 0;
+	var tempweakIce = 0;
+	var tempweakNormal = 0;
+	var tempweakPoison = 0;
+	var tempweakPsychic = 0;
+	var tempweakRock = 0;
+	var tempweakSteel = 0;
+	var tempweakWater = 0;
 	
-	pokecheck = document.getElementById('poke2choice').value;
-	typecheck = [];
+	var pokecheck = document.getElementById('poke2choice').value;
+	var typecheck = [];
 	
 	for(elem in BattlePokedex) {
 		if(BattlePokedex[elem].species === pokecheck) {
@@ -4552,27 +4546,27 @@ function getWeaknesses() {
 	
 	//**********************Check third Pokemon******************************************************
 	
-	tempweakBug = 0;
-	tempweakDark = 0;
-	tempweakDragon = 0;
-	tempweakElectric = 0;
-	tempweakFairy = 0;
-	tempweakFighting = 0;
-	tempweakFire = 0;
-	tempweakFlying = 0;
-	tempweakGhost = 0;
-	tempweakGrass = 0;
-	tempweakGround = 0;
-	tempweakIce = 0;
-	tempweakNormal = 0;
-	tempweakPoison = 0;
-	tempweakPsychic = 0;
-	tempweakRock = 0;
-	tempweakSteel = 0;
-	tempweakWater = 0;
+	var tempweakBug = 0;
+	var tempweakDark = 0;
+	var tempweakDragon = 0;
+	var tempweakElectric = 0;
+	var tempweakFairy = 0;
+	var tempweakFighting = 0;
+	var tempweakFire = 0;
+	var tempweakFlying = 0;
+	var tempweakGhost = 0;
+	var tempweakGrass = 0;
+	var tempweakGround = 0;
+	var tempweakIce = 0;
+	var tempweakNormal = 0;
+	var tempweakPoison = 0;
+	var tempweakPsychic = 0;
+	var tempweakRock = 0;
+	var tempweakSteel = 0;
+	var tempweakWater = 0;
 	
-	pokecheck = document.getElementById('poke3choice').value;
-	typecheck = [];
+	var pokecheck = document.getElementById('poke3choice').value;
+	var typecheck = [];
 	
 	for(elem in BattlePokedex) {
 		if(BattlePokedex[elem].species === pokecheck) {
@@ -4805,27 +4799,27 @@ function getWeaknesses() {
 	
 	//**********************Check fourth Pokemon******************************************************
 	
-	tempweakBug = 0;
-	tempweakDark = 0;
-	tempweakDragon = 0;
-	tempweakElectric = 0;
-	tempweakFairy = 0;
-	tempweakFighting = 0;
-	tempweakFire = 0;
-	tempweakFlying = 0;
-	tempweakGhost = 0;
-	tempweakGrass = 0;
-	tempweakGround = 0;
-	tempweakIce = 0;
-	tempweakNormal = 0;
-	tempweakPoison = 0;
-	tempweakPsychic = 0;
-	tempweakRock = 0;
-	tempweakSteel = 0;
-	tempweakWater = 0;
+	var tempweakBug = 0;
+	var tempweakDark = 0;
+	var tempweakDragon = 0;
+	var tempweakElectric = 0;
+	var tempweakFairy = 0;
+	var tempweakFighting = 0;
+	var tempweakFire = 0;
+	var tempweakFlying = 0;
+	var tempweakGhost = 0;
+	var tempweakGrass = 0;
+	var tempweakGround = 0;
+	var tempweakIce = 0;
+	var tempweakNormal = 0;
+	var tempweakPoison = 0;
+	var tempweakPsychic = 0;
+	var tempweakRock = 0;
+	var tempweakSteel = 0;
+	var tempweakWater = 0;
 	
-	pokecheck = document.getElementById('poke4choice').value;
-	typecheck = [];
+	var pokecheck = document.getElementById('poke4choice').value;
+	var typecheck = [];
 	
 	for(elem in BattlePokedex) {
 		if(BattlePokedex[elem].species === pokecheck) {
@@ -5058,27 +5052,27 @@ function getWeaknesses() {
 	
 	//**********************Check fifth Pokemon******************************************************
 	
-	tempweakBug = 0;
-	tempweakDark = 0;
-	tempweakDragon = 0;
-	tempweakElectric = 0;
-	tempweakFairy = 0;
-	tempweakFighting = 0;
-	tempweakFire = 0;
-	tempweakFlying = 0;
-	tempweakGhost = 0;
-	tempweakGrass = 0;
-	tempweakGround = 0;
-	tempweakIce = 0;
-	tempweakNormal = 0;
-	tempweakPoison = 0;
-	tempweakPsychic = 0;
-	tempweakRock = 0;
-	tempweakSteel = 0;
-	tempweakWater = 0;
+	var tempweakBug = 0;
+	var tempweakDark = 0;
+	var tempweakDragon = 0;
+	var tempweakElectric = 0;
+	var tempweakFairy = 0;
+	var tempweakFighting = 0;
+	var tempweakFire = 0;
+	var tempweakFlying = 0;
+	var tempweakGhost = 0;
+	var tempweakGrass = 0;
+	var tempweakGround = 0;
+	var tempweakIce = 0;
+	var tempweakNormal = 0;
+	var tempweakPoison = 0;
+	var tempweakPsychic = 0;
+	var tempweakRock = 0;
+	var tempweakSteel = 0;
+	var tempweakWater = 0;
 	
-	pokecheck = document.getElementById('poke5choice').value;
-	typecheck = [];
+	var pokecheck = document.getElementById('poke5choice').value;
+	var typecheck = [];
 	
 	for(elem in BattlePokedex) {
 		if(BattlePokedex[elem].species === pokecheck) {
@@ -5311,27 +5305,27 @@ function getWeaknesses() {
 	
 	//**********************Check sixth Pokemon******************************************************
 	
-	tempweakBug = 0;
-	tempweakDark = 0;
-	tempweakDragon = 0;
-	tempweakElectric = 0;
-	tempweakFairy = 0;
-	tempweakFighting = 0;
-	tempweakFire = 0;
-	tempweakFlying = 0;
-	tempweakGhost = 0;
-	tempweakGrass = 0;
-	tempweakGround = 0;
-	tempweakIce = 0;
-	tempweakNormal = 0;
-	tempweakPoison = 0;
-	tempweakPsychic = 0;
-	tempweakRock = 0;
-	tempweakSteel = 0;
-	tempweakWater = 0;
+	var tempweakBug = 0;
+	var tempweakDark = 0;
+	var tempweakDragon = 0;
+	var tempweakElectric = 0;
+	var tempweakFairy = 0;
+	var tempweakFighting = 0;
+	var tempweakFire = 0;
+	var tempweakFlying = 0;
+	var tempweakGhost = 0;
+	var tempweakGrass = 0;
+	var tempweakGround = 0;
+	var tempweakIce = 0;
+	var tempweakNormal = 0;
+	var tempweakPoison = 0;
+	var tempweakPsychic = 0;
+	var tempweakRock = 0;
+	var tempweakSteel = 0;
+	var tempweakWater = 0;
 	
-	pokecheck = document.getElementById('poke6choice').value;
-	typecheck = [];
+	var pokecheck = document.getElementById('poke6choice').value;
+	var typecheck = [];
 	
 	for(elem in BattlePokedex) {
 		if(BattlePokedex[elem].species === pokecheck) {
@@ -6035,31 +6029,31 @@ function getMovelist(pokechoice) {
 	
 	var canHP = false;
 	//If a pokemon can learn Hidden Power, add each type of Hidden Power
-	//for(i=0; i < validlist.length; i++) {
-	//	if(validlist[i] === "hiddenpower") {
-	//		canHP=true;
-	//		validlist.splice(i, 1);
-	//	}
-	//}
+	for(i=0; i < validlist.length; i++) {
+		if(validlist[i] === "hiddenpower") {
+			canHP=true;
+			validlist.splice(i, 1);
+		}
+	}
 	
-	//if(canHP ===true) {
-	//	validlist.push("hiddenpowerbug");
-	//	validlist.push("hiddenpowerdark");
-	//	validlist.push("hiddenpowerdragon");
-	//	validlist.push("hiddenpowerelectric");
-	//	validlist.push("hiddenpowerfighting");
-	//	validlist.push("hiddenpowerfire");
-	//	validlist.push("hiddenpowerflying");
-	//	validlist.push("hiddenpowerghost");
-	//	validlist.push("hiddenpowergrass");
-	//	validlist.push("hiddenpowerground");
-	//	validlist.push("hiddenpowerice");
-	//	validlist.push("hiddenpowerpoison");
-	//	validlist.push("hiddenpowerpsychic");
-	//	validlist.push("hiddenpowerrock");
-	//	validlist.push("hiddenpowersteel");
-	//	validlist.push("hiddenpowerwater");
-	//}
+	if(canHP ===true) {
+		validlist.push("hiddenpowerbug");
+		validlist.push("hiddenpowerdark");
+		validlist.push("hiddenpowerdragon");
+		validlist.push("hiddenpowerelectric");
+		validlist.push("hiddenpowerfighting");
+		validlist.push("hiddenpowerfire");
+		validlist.push("hiddenpowerflying");
+		validlist.push("hiddenpowerghost");
+		validlist.push("hiddenpowergrass");
+		validlist.push("hiddenpowerground");
+		validlist.push("hiddenpowerice");
+		validlist.push("hiddenpowerpoison");
+		validlist.push("hiddenpowerpsychic");
+		validlist.push("hiddenpowerrock");
+		validlist.push("hiddenpowersteel");
+		validlist.push("hiddenpowerwater");
+	}
 	
 	
 	//If Pokemon has a pre-evolution, add all of their moves
@@ -6459,10 +6453,7 @@ function changePic(pokeChooser) {
 			break;
 		case "Tapu Lele":
 			chosen = "tapulele";
-            break;
-        case "Toxtricity-Low-Key":
-            chosen = "toxtricity-lowkey";
-            break;
+			break;
 		default:
 			break;
 	}
@@ -6471,10 +6462,7 @@ function changePic(pokeChooser) {
 		var newLoc = "https://pyrotoz.com/bwmodels/" + chosen.toLowerCase() + ".png";
 		if(chosen.toLowerCase() === 'pikachu-rock-star') var newLoc = "https://pyrotoz.com/bwmodels/" + "pikachu-rockstar"+ ".png";
 		if(chosen.toLowerCase() === 'pikachu-pop-star') var newLoc = "https://pyrotoz.com/bwmodels/" + "pikachu-popstar"+ ".png";
-    }
-    else if (dexno >= 810 || chosen.endsWith("-Galar")) {
-        var newLoc = "https://play.pokemonshowdown.com/sprites/gen5/" + chosen.toLowerCase() + ".png";
-    }
+	}
 	else {
 		var newLoc = "https://pyrotoz.com/models/" + chosen.toLowerCase() + ".gif";
 	}
@@ -6644,14 +6632,8 @@ function getViableList(pokechoice,moveslot) {
 			try{
 				validList = TiersSUMO[elem].randomBattleMoves;
 			}
-            catch (err) {
-                try {
-                    validList = TiersSWSH[elem].randomBattleMoves;
-                }
-                catch(err2) {
-                    return ("");
-                }
-				
+			catch(err) {
+				return("");
 			}
 			
 			if(startsWith(chosenpoke,'Pikachu') && chosenpoke != 'Pikachu') {
@@ -7927,24 +7909,24 @@ function doFullSearch(n) {
 		var checkCount = 0;
 		//Count up how many criteria are met with this random generation
 		//Strengths
-		if(document.getElementById('strongbug').value !== 0) checkCount += 1;
-		if(document.getElementById('strongdark').value !== 0) checkCount += 1;
-		if(document.getElementById('strongdragon').value !== 0) checkCount += 1;
-		if(document.getElementById('strongelectric').value !== 0) checkCount += 1;
-		if(document.getElementById('strongfairy').value !== 0) checkCount += 1;
-		if(document.getElementById('strongfight').value !== 0) checkCount += 1;
-		if(document.getElementById('strongfire').value !== 0) checkCount += 1;
-		if(document.getElementById('strongflying').value !== 0) checkCount += 1;
-		if(document.getElementById('strongghost').value !== 0) checkCount += 1;
-		if(document.getElementById('stronggrass').value !== 0) checkCount += 1;
-		if(document.getElementById('strongground').value !== 0) checkCount += 1;
-		if(document.getElementById('strongice').value !== 0) checkCount += 1;
-		if(document.getElementById('strongnormal').value !== 0) checkCount += 1;
-		if(document.getElementById('strongpoison').value !== 0) checkCount += 1;
-		if(document.getElementById('strongpsychic').value !== 0) checkCount += 1;
-		if(document.getElementById('strongrock').value !== 0) checkCount += 1;
-		if(document.getElementById('strongsteel').value !== 0) checkCount += 1;
-		if(document.getElementById('strongwater').value !== 0) checkCount += 1;
+		if(document.getElementById('strongbug').value != 0) checkCount += 1;
+		if(document.getElementById('strongdark').value != 0) checkCount += 1;
+		if(document.getElementById('strongdragon').value != 0) checkCount += 1;
+		if(document.getElementById('strongelectric').value != 0) checkCount += 1;
+		if(document.getElementById('strongfairy').value != 0) checkCount += 1;
+		if(document.getElementById('strongfight').value != 0) checkCount += 1;
+		if(document.getElementById('strongfire').value != 0) checkCount += 1;
+		if(document.getElementById('strongflying').value != 0) checkCount += 1;
+		if(document.getElementById('strongghost').value != 0) checkCount += 1;
+		if(document.getElementById('stronggrass').value != 0) checkCount += 1;
+		if(document.getElementById('strongground').value != 0) checkCount += 1;
+		if(document.getElementById('strongice').value != 0) checkCount += 1;
+		if(document.getElementById('strongnormal').value != 0) checkCount += 1;
+		if(document.getElementById('strongpoison').value != 0) checkCount += 1;
+		if(document.getElementById('strongpsychic').value != 0) checkCount += 1;
+		if(document.getElementById('strongrock').value != 0) checkCount += 1;
+		if(document.getElementById('strongsteel').value != 0) checkCount += 1;
+		if(document.getElementById('strongwater').value != 0) checkCount += 1;
 		//Weaknesses
 		if(document.getElementById('weakbug').value < 3) checkCount += 1;
 		if(document.getElementById('weakdark').value < 3) checkCount += 1;
@@ -8123,10 +8105,10 @@ function randomGenerate() {
 		
 		for(elem1 in BattlePokedex) {
 			try {
-                var testing123 = BattlePokedex[elem1].num;
+				var testing123 = BattlePokedex[elem1].num
 			}
 			catch(err) {
-				//nothing
+				
 			}
 			if(dexno === testing123) {
 				formecount+=1;
